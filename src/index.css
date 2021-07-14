@@ -1,23 +1,81 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cuprum:ital,wght@0,400;0,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap");
 
 :root {
-  /* COLORS */
-  --white: #fbfbfb;
-  --purple: #180048;
-  --darkPurple: #100030;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  /* COLOR */
+  --tiffany: #26dfd0;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #e5dace;
-  /* background-color: var(--purple);
-  color: var(--white); */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url("./assets/images/4kmountain.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.App {
+  height: 100vh;
+  max-width: 80vw;
+  margin: 0 auto 0 auto;
+  font-family: "Cuprum", sans-serif;
+  letter-spacing: 1px;
+}
+/* NAVBAR */
+.navbar {
+  background-color: #071330;
+  border-radius: 0 0 4rem 4rem;
+}
+.navbar,
+h3,
+h5 {
+  color: var(--tiffany);
+}
+.navbar h3 {
+  font-family: "Zen Tokyo Zoo", cursive;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.navbar h5:hover {
+  transform: scale(1.1);
+  transition: 0.3s ease;
+}
+/* RANK SECTION */
+.rank {
+  margin-top: 10rem;
+}
+/* FORM SECTION */
+.form {
+  /* background-color: rgba(102, 153, 204, 0.9);
+  border-radius: 4rem; */
+
+  /* margin: 1rem 0; */
+  padding: 2rem;
+}
+.form-title {
+  color: var(--tiffany);
+  font-size: 1.5rem;
+}
+.form-input {
+  margin: 0 auto 0 auto;
+}
+.form-btn {
+  width: 10rem;
+}
+
+@media screen and (max-width: 889px) {
+  #root {
+    background-color: #c3ceda;
+  }
+  body {
+    background-image: none;
+  }
+  /* .navbar {
+    background-color: rgba(160, 32, 240, 0.8);
+  }
+  .form-title {
+    color: #26dfd0;
+  } */
 }
