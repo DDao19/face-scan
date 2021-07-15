@@ -64,18 +64,21 @@ h5 {
 .form-btn {
   width: 10rem;
 }
+/* FORM ALERT */
+.alert {
+  margin: 0 auto;
+}
+/* FACE DETECTION IMAGE */
+.face-detection {
+  width: 400px;
+  height: auto;
+}
 
 @media screen and (max-width: 889px) {
   #root {
-    background-color: #c3ceda;
+    background-color: #0c4160;
   }
   body {
     background-image: none;
   }
-  /* .navbar {
-    background-color: rgba(160, 32, 240, 0.8);
-  }
-  .form-title {
-    color: #26dfd0;
-  } */
 }

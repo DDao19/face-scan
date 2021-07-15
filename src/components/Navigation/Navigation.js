@@ -2,10 +2,10 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 
 const Navigation = () => {
   return (
-    <Navbar className="py-4 navbar">
+    <Navbar className="py-3 px-4 navbar">
       <Container>
         <Navbar.Brand href="#home">
-          <h3>Face Scan Recognition</h3>
+          <h3>Face Scan Detection</h3>
         </Navbar.Brand>
         <Nav className="ml-auto">
           <Nav.Link href="#signout">
