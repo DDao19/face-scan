@@ -75,8 +75,14 @@ const ImageLinkForm = ({ setImageUrl, input, setInput }) => {
                 }}
                 dismissible
               >
-                <Alert.Heading>Whoops!</Alert.Heading>
-                {error ? <p>{error}</p> : <p>{apiError}</p>}
+                <Alert.Heading>
+                  <h5 className="alert-heading">Whoops!</h5>
+                </Alert.Heading>
+                {error ? (
+                  <p className="alert-msg">{error}</p>
+                ) : (
+                  <p className="alert-msg">{apiError}</p>
+                )}
               </Alert>
             ) : null}
           </div>
