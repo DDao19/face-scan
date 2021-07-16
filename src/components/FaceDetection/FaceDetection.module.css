@@ -1,0 +1,13 @@
+.image {
+  width: 400px;
+}
+.boundingBox {
+  position: absolute;
+  box-shadow: 0 0 0 3px #ff0000 inset;
+  cursor: pointer;
+}
+
+.boundingBox:hover {
+  display: block;
+  background-color: rgba(255, 0, 0, 0.4);
+}

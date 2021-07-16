@@ -3,39 +3,78 @@ import { Alert } from "react-bootstrap";
 import Clarifai from "clarifai";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import FaceDetection from "../FaceDetection/FaceDetection";
 
-// the code below is to create a Clarifai.App instance which you interact with the client.
+// The code below is to create a Clarifai.App instance which you interact with the client.
 const app = new Clarifai.App({
   apiKey: process.env.REACT_APP_FACE_DETECT_API,
 });
 
-const ImageLinkForm = ({ setImageUrl, input, setInput }) => {
+const ImageLinkForm = () => {
+  const [input, setInput] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState(null);
   const [apiError, setApiError] = useState(null);
+  // Bounding Box
+  const [boxes, setBoxes] = useState([]);
 
-  // handles the entered image url
-  const handleChange = (e) => {
+  // Calculates face location
+  const calculateFaceLocation = (data) => {
+    const boundingBox = data.outputs[0].data.regions.map(
+      (region) => region.region_info.bounding_box
+    );
+    // const boundingBox =
+    //   data.outputs[0].data.regions[0].region_info.bounding_box;
+    // Grabbing the width and height of the image entered
+
+    const faceImage = document.getElementById("input-image");
+    const width = Number(faceImage.width);
+    const height = Number(faceImage.height);
+
+    return boundingBox.map((face) => {
+      return {
+        leftCol: face.left_col * width,
+        topRow: face.top_row * height,
+        rightCol: width - face.right_col * width,
+        bottomRow: height - face.bottom_row * height,
+      };
+    });
+
+    // const faceBox = {
+    //   leftCol: boundingBox.left_col * width,
+    //   topRow: boundingBox.top_row * height,
+    //   rightCol: width - boundingBox.right_col * width,
+    //   bottomRow: height - boundingBox.bottom_row * height,
+    // };
+
+    // console.log(boundingBox);
+    // setBox(faceBox);
+  };
+
+  const displayFaceBox = (data) => {
+    setBoxes(data);
+  };
+
+  const handleInputChange = (e) => {
     setInput(e.target.value);
   };
 
   const handleButtonClick = () => {
-    // Set the inputUrl to the imageUrl state. Also check if valid URL
     if (input && input.includes("http")) {
       setError(null);
       setApiError(null);
+      setBoxes([]);
       setImageUrl(input);
       // How you would send image URLS and receive back predictions from our Face Dectection model.
-      app.models.predict(Clarifai.FACE_DETECT_MODEL, input).then(
-        (response) => {
-          const boundingBox =
-            response.outputs[0].data.regions[0].region_info.bounding_box;
-          console.log(boundingBox);
-        },
-        (err) => {
+      app.models
+        .predict(Clarifai.FACE_DETECT_MODEL, input)
+        .then((response) => {
+          displayFaceBox(calculateFaceLocation(response));
+        })
+        .catch((err) => {
           setImageUrl(null);
           setApiError("Invalid URL. Please try again.");
-        }
-      );
+        });
     } else {
       setError("Please enter a valid image URL.");
     }
@@ -55,7 +94,7 @@ const ImageLinkForm = ({ setImageUrl, input, setInput }) => {
               className="w-75 form-input"
               type="text"
               placeholder="Enter an image URL"
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
             <Button
               variant="danger"
@@ -86,6 +125,7 @@ const ImageLinkForm = ({ setImageUrl, input, setInput }) => {
               </Alert>
             ) : null}
           </div>
+          <FaceDetection boxes={boxes} imageUrl={imageUrl} />
         </Col>
       </Row>
     </Container>

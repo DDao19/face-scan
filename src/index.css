@@ -57,16 +57,17 @@ h5 {
   transform: scale(1.1);
   transition: 0.3s ease;
 }
+/* PARTICLES */
+.particles {
+  position: absolute;
+  z-index: -1;
+}
 /* RANK SECTION */
 .rank {
   margin-top: 10rem;
 }
 /* FORM SECTION */
 .form {
-  /* background-color: rgba(102, 153, 204, 0.9);
-  border-radius: 4rem; */
-
-  /* margin: 1rem 0; */
   padding: 2rem;
 }
 .form-title {
@@ -83,11 +84,13 @@ h5 {
 .alert {
   margin: 0 auto;
 }
+
 /* FACE DETECTION IMAGE */
 .face-detection {
   width: 400px;
   height: auto;
 }
+/* BOUNDING BOX */
 
 @media screen and (max-width: 889px) {
   .navbar {
@@ -116,4 +119,7 @@ h5 {
     font-size: 0.8rem;
     margin: 0;
   }
+  /* .face-detection {
+    width: 400px;
+  } */
 }

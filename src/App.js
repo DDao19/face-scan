@@ -1,16 +1,16 @@
-import { useState } from "react";
+// import { useState } from "react";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import Navigation from "./components/Navigation/Navigation";
 import Rank from "./components/Rank/Rank";
-import FaceDetection from "./components/FaceDetection/FaceDetection";
-// Particles
+// import FaceDetection from "./components/FaceDetection/FaceDetection";
+// Particles.js
 import Particles from "react-particles-js";
 
 const App = () => {
-  const [input, setInput] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  // const [input, setInput] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
 
-  // Particles params
+  // PARTICLES PARAMS
   const options = {
     particles: {
       number: {
@@ -69,12 +69,7 @@ const App = () => {
       <Navigation />
       <Particles className="particles" params={options} />
       <Rank />
-      <ImageLinkForm
-        input={input}
-        setInput={setInput}
-        setImageUrl={setImageUrl}
-      />
-      <FaceDetection imageUrl={imageUrl} />
+      <ImageLinkForm />
     </div>
   );
 };
