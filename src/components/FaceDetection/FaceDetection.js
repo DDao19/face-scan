@@ -1,4 +1,5 @@
 import { Col, Row } from "react-bootstrap";
+import { motion } from "framer-motion";
 import classes from "./FaceDetection.module.css";
 
 const FaceDetection = ({ imageUrl, boxes }) => {
@@ -13,8 +14,10 @@ const FaceDetection = ({ imageUrl, boxes }) => {
     <Row className="justify-content-sm-center">
       <Col sm="auto">
         {imageUrl ? (
-          <img
+          <motion.img
             className="face-detection"
+            animate={{ scale: [0.8, 1] }}
+            transition={{ duration: 0.8 }}
             id="input-image"
             alt="face dectection"
             src={imageUrl}
@@ -23,16 +26,18 @@ const FaceDetection = ({ imageUrl, boxes }) => {
         {boxes.map((box, i) => {
           const { topRow, rightCol, bottomRow, leftCol } = box;
           return (
-            <div
+            <motion.div
               className={classes.boundingBox}
+              animate={{ scale: [1, 0.9] }}
+              transition={{ duration: 0.5 }}
               key={i}
               style={{
                 top: topRow,
-                right: rightCol,
+                right: rightCol + 10,
                 bottom: bottomRow,
-                left: leftCol,
+                left: leftCol + 10,
               }}
-            ></div>
+            ></motion.div>
           );
         })}
       </Col>

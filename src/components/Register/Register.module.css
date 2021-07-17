@@ -1,0 +1,7 @@
+.registerForm {
+  padding: 3rem;
+  background-color: rgba(27, 39, 53, 0.7);
+  border: 1px solid #26dfd0;
+  border-radius: 45px 8px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+}

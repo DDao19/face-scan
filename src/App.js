@@ -1,15 +1,12 @@
-// import { useState } from "react";
-import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
-import Navigation from "./components/Navigation/Navigation";
-import Rank from "./components/Rank/Rank";
-// import FaceDetection from "./components/FaceDetection/FaceDetection";
-// Particles.js
+import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
+import FaceDetectionPage from "./pages/FaceDetectionPage";
+import { Switch, Route } from "react-router-dom";
+
 import Particles from "react-particles-js";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
-  // const [input, setInput] = useState("");
-  // const [imageUrl, setImageUrl] = useState("");
-
   // PARTICLES PARAMS
   const options = {
     particles: {
@@ -66,10 +63,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navigation />
       <Particles className="particles" params={options} />
-      <Rank />
-      <ImageLinkForm />
+      <Switch>
+        <Route path="/face-detection">
+          <FaceDetectionPage />
+        </Route>
+        <Route path="/register">
+          <RegisterPage />
+        </Route>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+      </Switch>
+      <Footer />
     </div>
   );
 };

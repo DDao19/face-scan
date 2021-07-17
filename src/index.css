@@ -42,6 +42,7 @@ body {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   border-radius: 0 0 4rem 4rem;
   border: 1px solid #1b2735;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .navbar,
 h3,
@@ -89,9 +90,28 @@ h5 {
 .face-detection {
   width: 400px;
   height: auto;
+  border: 2px solid #a7bdd6;
+  border-radius: 10px;
 }
 /* BOUNDING BOX */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
 
+  padding: 10px;
+  color: #c3ceda;
+  background-color: rgba(9, 10, 15, 0.8);
+  /* background-color: rgba(27, 39, 53, 0.8); */
+}
+.footer-wrapper {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
 @media screen and (max-width: 889px) {
   .navbar {
     margin: 0;
@@ -119,7 +139,4 @@ h5 {
     font-size: 0.8rem;
     margin: 0;
   }
-  /* .face-detection {
-    width: 400px;
-  } */
 }
