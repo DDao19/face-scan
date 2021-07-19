@@ -1,18 +1,23 @@
+import { useEffect } from "react";
 import Navigation from "../Navigation/Navigation";
-
 import { Container, Row, Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import classes from "./SignIn.module.css";
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const SignIn = () => {
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
   return (
     <div>
       <Navigation />
       <Container className="pt-5" style={{ marginTop: "12rem" }}>
         <Row className="justify-content-center">
-          <Col lg="6" className={classes.signinForm}>
+          <Col lg="6" className={classes.signinForm} data-aos="fade-right">
             <h3 className="text-center text-light">Sign In</h3>
             <Form>
               <Form.Group>

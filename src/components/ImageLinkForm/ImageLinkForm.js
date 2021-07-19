@@ -4,7 +4,6 @@ import Clarifai from "clarifai";
 import { Button, Row, Col, Container } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
 import FaceDetection from "../FaceDetection/FaceDetection";
-import { motion } from "framer-motion";
 
 // The code below is to create a Clarifai.App instance which you interact with the client.
 const app = new Clarifai.App({
@@ -88,11 +87,7 @@ const ImageLinkForm = () => {
     <Container>
       <Row>
         <Col>
-          <motion.div
-            className="text-center form"
-            animate={{ scale: [0.2, 1] }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className="text-center form">
             <Form.Label>
               <h5 className="form-title">
                 Detect the face of an image. Give it a try!
@@ -132,7 +127,7 @@ const ImageLinkForm = () => {
                 )}
               </Alert>
             ) : null}
-          </motion.div>
+          </div>
           <FaceDetection boxes={boxes} imageUrl={imageUrl} />
         </Col>
       </Row>

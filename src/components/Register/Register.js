@@ -11,7 +11,7 @@ const Register = () => {
       <Navigation />
       <Container className="pt-5" style={{ marginTop: "12rem" }}>
         <Row className="justify-content-center">
-          <Col lg="6" className={classes.registerForm}>
+          <Col lg="6" className={classes.registerForm} data-aos="fade-right">
             <h3 className="text-center text-light">Register</h3>
             <Form>
               <Form.Group>
