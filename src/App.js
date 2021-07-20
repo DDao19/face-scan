@@ -1,4 +1,5 @@
-import HomePage from "./pages/HomePage";
+import { useState } from "react";
+import SignInPage from "./pages/SignInPage";
 import RegisterPage from "./pages/RegisterPage";
 import FaceDetectionPage from "./pages/FaceDetectionPage";
 import { Switch, Route } from "react-router-dom";
@@ -7,6 +8,13 @@ import Particles from "react-particles-js";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    setIsLoggedIn(true);
+  };
+
   // PARTICLES PARAMS
   const options = {
     particles: {
@@ -64,17 +72,24 @@ const App = () => {
   return (
     <div className="App">
       <Particles className="particles" params={options} />
-      <Switch>
-        <Route path="/face-detection">
-          <FaceDetectionPage />
-        </Route>
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
-        <Route path="/" exact>
-          <HomePage />
-        </Route>
-      </Switch>
+
+      {isLoggedIn ? (
+        <Switch>
+          <Route path="/" exact>
+            <FaceDetectionPage />
+          </Route>
+        </Switch>
+      ) : (
+        <Switch>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/signin">
+            <SignInPage handleOnClick={handleOnClick} />
+          </Route>
+        </Switch>
+      )}
+
       <Footer />
     </div>
   );

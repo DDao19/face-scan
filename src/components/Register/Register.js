@@ -55,7 +55,7 @@ const Register = () => {
                 Register
               </Button>
               <h5 className="my-3 text-center text-light">
-                Already have an account? <Link to="/">Log In</Link>
+                Already have an account? <Link to="/signin">Log In</Link>
               </h5>
             </Form>
           </Col>

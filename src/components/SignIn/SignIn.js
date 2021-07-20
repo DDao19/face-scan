@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-const SignIn = () => {
+const SignIn = ({ handleOnClick }) => {
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
@@ -35,9 +35,13 @@ const SignIn = () => {
                 size="block"
                 variant="primary"
                 type="submit"
+                onClick={handleOnClick}
               >
-                Submit
+                <Link to="/" className={classes.links}>
+                  Sign In
+                </Link>
               </Button>
+
               <h5 className="my-3 text-center text-light">
                 Don't have an account? <Link to="/register">Register</Link>
               </h5>
