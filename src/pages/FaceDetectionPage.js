@@ -1,13 +1,11 @@
-import Navigation from "../components/Navigation/Navigation";
 import Rank from "../components/Rank/Rank";
 import ImageLinkForm from "../components/ImageLinkForm/ImageLinkForm";
 
-const FaceDetectionPage = () => {
+const FaceDetectionPage = ({ user, setUser }) => {
   return (
     <div>
-      <Navigation />
-      <Rank />
-      <ImageLinkForm />
+      <Rank user={user} />
+      <ImageLinkForm user={user} setUser={setUser} />
     </div>
   );
 };

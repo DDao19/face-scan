@@ -1,20 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignInPage from "./pages/SignInPage";
 import RegisterPage from "./pages/RegisterPage";
 import FaceDetectionPage from "./pages/FaceDetectionPage";
+import Navigation from "./components/Navigation/Navigation";
 import { Switch, Route } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 
 import Particles from "react-particles-js";
-import Footer from "./components/Footer/Footer";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({});
 
-  const handleOnClick = (e) => {
-    e.preventDefault();
-    setIsLoggedIn(true);
+  const loadUser = (userData) => {
+    setUser(userData);
   };
 
+  const handleLoginRegister = () => {
+    setIsLoggedIn(true);
+  };
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUser({});
+  };
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
   // PARTICLES PARAMS
   const options = {
     particles: {
@@ -68,28 +82,38 @@ const App = () => {
     },
   };
   // END OF PARTICLES
-
+  console.log(user);
   return (
     <div className="App">
       <Particles className="particles" params={options} />
-
+      <Navigation
+        isLoggedIn={isLoggedIn}
+        handleLogout={handleLogout}
+        setUser={setUser}
+      />
       {isLoggedIn ? (
         <Switch>
-          <Route path="/" exact>
-            <FaceDetectionPage />
+          <Route path="/face-detect" exact>
+            <FaceDetectionPage user={user} setUser={setUser} />
           </Route>
         </Switch>
       ) : (
         <Switch>
-          <Route path="/register">
-            <RegisterPage />
+          <Route path="/" exact>
+            <SignInPage
+              handleLoginRegister={handleLoginRegister}
+              loadUser={loadUser}
+              user={user}
+            />
           </Route>
-          <Route path="/signin">
-            <SignInPage handleOnClick={handleOnClick} />
+          <Route path="/register" exact>
+            <RegisterPage
+              handleLoginRegister={handleLoginRegister}
+              loadUser={loadUser}
+            />
           </Route>
         </Switch>
       )}
-
       <Footer />
     </div>
   );

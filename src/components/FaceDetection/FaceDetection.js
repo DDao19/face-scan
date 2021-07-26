@@ -3,13 +3,6 @@ import { motion } from "framer-motion";
 import classes from "./FaceDetection.module.css";
 
 const FaceDetection = ({ imageUrl, boxes }) => {
-  // let styles = {
-  //   top: box.topRow,
-  //   right: box.rightCol,
-  //   bottom: box.bottomRow,
-  //   left: box.leftCol,
-  // };
-
   return (
     <Row className="justify-content-sm-center">
       <Col sm="auto">

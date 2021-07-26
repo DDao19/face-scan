@@ -1,9 +1,13 @@
 import SignIn from "../components/SignIn/SignIn";
 
-const SignInPage = ({ handleOnClick }) => {
+const SignInPage = ({ handleLoginRegister, loadUser, user }) => {
   return (
     <div>
-      <SignIn handleOnClick={handleOnClick} />
+      <SignIn
+        handleLoginRegister={handleLoginRegister}
+        loadUser={loadUser}
+        user={user}
+      />
     </div>
   );
 };

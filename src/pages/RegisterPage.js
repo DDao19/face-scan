@@ -1,9 +1,9 @@
 import Register from "../components/Register/Register";
 
-const RegisterPage = () => {
+const RegisterPage = ({ handleLoginRegister, loadUser }) => {
   return (
     <div>
-      <Register />
+      <Register handleLoginRegister={handleLoginRegister} loadUser={loadUser} />
     </div>
   );
 };

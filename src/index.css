@@ -45,6 +45,7 @@ body {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .navbar,
+h2,
 h3,
 h5 {
   color: var(--tiffany);
@@ -107,11 +108,27 @@ footer {
   background-color: rgba(9, 10, 15, 0.8);
   /* background-color: rgba(27, 39, 53, 0.8); */
 }
+/* FOOTER */
 .footer-wrapper {
   text-align: center;
   display: flex;
   justify-content: center;
 }
+/* NOT FOUND */
+.not-found {
+  letter-spacing: 3px;
+  text-align: center;
+  margin-top: 400px;
+}
+.not-found h1 {
+  font-size: 5rem;
+  color: #ba0f30;
+}
+.sign-out,
+.sign-out:hover {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 889px) {
   .navbar {
     margin: 0;

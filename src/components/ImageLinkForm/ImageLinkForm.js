@@ -10,7 +10,7 @@ const app = new Clarifai.App({
   apiKey: process.env.REACT_APP_FACE_DETECT_API,
 });
 
-const ImageLinkForm = () => {
+const ImageLinkForm = ({ user, setUser }) => {
   const [input, setInput] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [error, setError] = useState(null);
@@ -62,7 +62,7 @@ const ImageLinkForm = () => {
     setInput(e.target.value);
   };
 
-  const handleButtonClick = () => {
+  const onImageSubmit = () => {
     if (input && input.includes("http")) {
       setError(null);
       setApiError(null);
@@ -72,6 +72,19 @@ const ImageLinkForm = () => {
       app.models
         .predict(Clarifai.FACE_DETECT_MODEL, input)
         .then((response) => {
+          if (response) {
+            fetch("http://localhost:3001/image", {
+              method: "put",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                id: user.id,
+              }),
+            })
+              .then((response) => response.json())
+              .then((count) =>
+                setUser(Object.assign(user, { entries: count }))
+              );
+          }
           displayFaceBox(calculateFaceLocation(response));
         })
         .catch((err) => {
@@ -102,7 +115,7 @@ const ImageLinkForm = () => {
             <Button
               variant="danger"
               className="form-btn mt-3"
-              onClick={handleButtonClick}
+              onClick={onImageSubmit}
             >
               Detect Face <i className="far fa-meh-blank"></i>
             </Button>
