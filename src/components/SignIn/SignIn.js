@@ -30,7 +30,7 @@ const SignIn = ({ handleLoginRegister, loadUser, user }) => {
       setSigninError(true);
       <Redirect to="/" />;
     } else {
-      fetch("http://localhost:3001/signin", {
+      fetch("https://evening-brook-88624.herokuapp.com/signin", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: signInEmail, password: signInPassword }),
@@ -49,7 +49,7 @@ const SignIn = ({ handleLoginRegister, loadUser, user }) => {
         });
     }
   };
-  console.log(noMatchError);
+
   return (
     <div>
       <Container className="pt-5" style={{ marginTop: "12rem" }}>

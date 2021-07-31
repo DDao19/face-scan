@@ -27,7 +27,7 @@ const Register = ({ handleLoginRegister, loadUser }) => {
     if (name === "" || email === "" || password === "") {
       setRegistrationError(true);
     } else {
-      fetch("http://localhost:3001/register", {
+      fetch("https://evening-brook-88624.herokuapp.com/register", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),

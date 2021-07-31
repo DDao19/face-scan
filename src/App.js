@@ -82,7 +82,6 @@ const App = () => {
     },
   };
   // END OF PARTICLES
-  console.log(user);
   return (
     <div className="App">
       <Particles className="particles" params={options} />

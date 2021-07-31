@@ -73,7 +73,7 @@ const ImageLinkForm = ({ user, setUser }) => {
         .predict(Clarifai.FACE_DETECT_MODEL, input)
         .then((response) => {
           if (response) {
-            fetch("http://localhost:3001/image", {
+            fetch("https://evening-brook-88624.herokuapp.com/image", {
               method: "put",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
@@ -81,9 +81,8 @@ const ImageLinkForm = ({ user, setUser }) => {
               }),
             })
               .then((response) => response.json())
-              .then((count) =>
-                setUser(Object.assign(user, { entries: count }))
-              );
+              .then((count) => setUser(Object.assign(user, { entries: count })))
+              .catch(console.log);
           }
           displayFaceBox(calculateFaceLocation(response));
         })
@@ -102,6 +101,7 @@ const ImageLinkForm = ({ user, setUser }) => {
         <Col>
           <div className="text-center form">
             <Form.Label>
+              <h2 className="text-white mb-4">{user.entries}</h2>
               <h5 className="form-title">
                 Detect the face of an image. Give it a try!
               </h5>
